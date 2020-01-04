@@ -1,10 +1,11 @@
 from screen import Screen
 from ship import Ship
 from asteroid import Asteroid
-from torpedo import Torpedo
 import sys
 import math
 import random
+
+import time
 
 DEFAULT_ASTEROIDS_NUM = 5
 
@@ -116,16 +117,20 @@ class GameRunner:
 
     def __check_collisions(self):
         for asteroid in self.__asteroids:
-            for torpedo in self.__torpedos:
-                if asteroid.has_intersection(torpedo):
-                    self.__handle_asteroid_hit(asteroid, torpedo)
-
-                    self.__remove_torpedo(torpedo)
-                    self.__update_score(asteroid)
-
             if asteroid.has_intersection(self.__spaceship):
                 self.__remove_life()
                 self.__remove_asteroid(asteroid)
+                # asteroid removed - continue to next
+                continue
+            else:
+                for torpedo in self.__torpedos:
+                    if asteroid.has_intersection(torpedo):
+                        self.__handle_asteroid_hit(asteroid, torpedo)
+
+                        self.__remove_torpedo(torpedo)
+                        self.__update_score(asteroid)
+                        # asteroid removed - continue to next
+                        break
 
     def __remove_life(self):
         if self.__lives > 0:
