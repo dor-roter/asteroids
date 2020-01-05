@@ -1,12 +1,12 @@
 ################################################
 # File: ship.py
-# # Writer: Asif Kagan, Dor Roter
-# # Login: asifka, dor.roter
-# # Exercise: ------
+# Writer: Asif Kagan, Dor Roter
+# Login: asifka, dor.roter
+# Exercise: ------
 # # More:
-# #       Consulted: -----
-# #       Internet:
-# #       Notes:
+#       Consulted: -----
+#       Internet:
+#       Notes:
 # ################################################
 from game_object import GameObject
 from torpedo import Torpedo
